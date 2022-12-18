@@ -31,4 +31,4 @@ jobs:
           
       - name: start minikube
         run: 
-          minikube start
+          sudo minikube start
