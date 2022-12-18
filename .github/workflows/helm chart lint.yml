@@ -34,7 +34,3 @@ jobs:
       - name: check chart lint
         run: |
           helm lint
-          
-      - name: check chart dry-run
-        run: |
-          helm install test . --dry-run
