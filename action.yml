@@ -1,15 +1,12 @@
 name: 'helm chart lint and dry run'
 
 runs:
-  setup:
-      # 使用一个开源的k3s actions
-      - uses: debianmaster/actions-k3s@master
-        id: k3s
-        with:
-          version: 'latest'
+  # 使用一个开源的k3s actions
+  - id: k3s
+    uses: debianmaster/actions-k3s@master
+    with:
+      version: 'latest'
 
-      - name: check chart lint
-        run: helm lint
+  - run: helm lint
 
-      - name: dry run chart
-        run: helm install test . --dry-run
+  - run: helm install test . --dry-run
