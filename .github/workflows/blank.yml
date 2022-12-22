@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - uses: YkeLit/test-chart@main
+      - uses: YkeLit/test-action@main
