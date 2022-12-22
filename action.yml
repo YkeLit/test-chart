@@ -2,8 +2,7 @@ name: 'helm chart lint and dry run'
 
 runs:
   # 使用一个开源的k3s actions
-  - id: k3s
-    uses: debianmaster/actions-k3s@master
+  - uses: debianmaster/actions-k3s@master
     with:
       version: 'latest'
 
