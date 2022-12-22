@@ -34,3 +34,10 @@ jobs:
       - name: check chart lint
         run: |
           helm lint
+          
+      - uses: debianmaster/actions-k3s@master
+        id: k3s
+        with:
+          version: 'latest'
+      - run: |
+          helm install test . --dry-run
