@@ -13,4 +13,4 @@ jobs:
       
       - uses: YkeLit/test-action@main
         with: 
-          version: 'v1.21.2-k3s1'
+          version: 'v1.22.17-k3s1'
