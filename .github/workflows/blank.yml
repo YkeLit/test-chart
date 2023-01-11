@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: install k8s
-        run: |
-          https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
       - name: example tests
         run: |
           helm lint
