@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: install k3s
+        run: |
+
       - name: example tests
         run: |
           helm lint
