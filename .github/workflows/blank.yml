@@ -1,16 +1,20 @@
-name: use-action
+name: chart test
 on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+env:
+  KUBECONFIG: k3s.yaml
 jobs:
-
-  build:
+  k3s:
+    name: k3s
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      
-      - uses: YkeLit/test-action@main
-        with: 
-          version: 'v1.22.17-k3s1'
+      - name: checkout code
+        uses: actions/checkout@master
+      - name: k3s
+        uses: YkeLit/k3s-on-actions@master
+        with:
+          custom_registry: false
+      - name: try to use kubeconfig
+        run: kubectl get pods -A
