@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ include "..fullname" . }}-web
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: HOST(`asdasdas`)
+      kind: Rule
+      services:
+        - name: {{ include "..fullname" $ }}
+          port: {{ include "..fullname" $ }}
+          passHostHeader: true
