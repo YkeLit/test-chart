@@ -18,4 +18,4 @@ jobs:
       - name: example tests
         run: |
           helm lint
-          helm install sad . --dry-run
+          helm install sad . --dry-run -n default --create-namespace
