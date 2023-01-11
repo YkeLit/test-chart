@@ -13,7 +13,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@master
       - name: k3s
-        uses: YkeLit/k3s-on-actions@master
+        uses: yellowmegaman/k3s-gha@master
         with:
           custom_registry: false
       - name: try to use kubeconfig
