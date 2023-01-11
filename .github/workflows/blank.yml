@@ -17,4 +17,5 @@ jobs:
           cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
       - name: example tests
         run: |
-          kubectl get pods -A
+          helm lint
+          helm install sad . --dry-run
