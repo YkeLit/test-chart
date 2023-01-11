@@ -3,8 +3,6 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-env:
-  KUBECONFIG: k3s.yaml
 jobs:
   k3s:
     name: k3s
