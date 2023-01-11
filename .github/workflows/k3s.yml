@@ -1,0 +1,15 @@
+name: k3s
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+    - uses: debianmaster/actions-k3s@master # 使用k3s提供的k8s环境
+      id: k3s
+      with:
+        version: 'v1.18.2-k3s1'
+    - run: |
+        kubectl cluster-info
