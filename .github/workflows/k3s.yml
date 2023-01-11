@@ -12,5 +12,4 @@ jobs:
       with:
         version: 'v1.18.2-k3s1'
     - run: |
-        kubectl get nodes
-        kubectl config view --raw
+        kubectl cluster-info
