@@ -17,4 +17,4 @@ jobs:
           cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
       - name: example tests
         run: |
-          helm lint
+          kubectl get pods
