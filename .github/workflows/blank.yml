@@ -6,7 +6,7 @@ on:
 jobs:
   k3s:
     name: k3s
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,X64]
     steps:
       - uses: actions/checkout@v3
       - name: install k3s
