@@ -12,9 +12,9 @@ runs:
       shell: bash
       run: |
         IMAGE_NAME=`basename ${{ github.repository }}`
-        sed '$d' <<< ${{ inputs.registries }}
+        IMAGES=$(sed '$d' <<< ${{ inputs.registries }})
         echo "images<<EOF" >> $GITHUB_OUTPUT
-        echo "${{ inputs.registries }}" | while read line; do
+        echo "$IMAGES" | while read line; do
           echo "$line" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}" >> $GITHUB_OUTPUT
         done
         echo "EOF" >> $GITHUB_OUTPUT
