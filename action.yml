@@ -12,7 +12,7 @@ runs:
       id: registries
       run: |
         IMAGE_NAME=`basename ${{ github.repository }}`
-        echo "${{ inputs.registries }}" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}"
+        echo "${{inputs.registries}}" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}"
     - name: Login to the custom registry
       shell: bash
       run: |
