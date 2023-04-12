@@ -6,15 +6,10 @@ on:
 jobs:
  build:
    runs-on: ubuntu-latest
-   env:
-     my_str: a,b,c,d
-       a1,b1,c1,d1
-       a2,b2,c2,d2
          
    steps:
-
-     - id: repo-basename
-       run: |
-         echo $my_str | awk -F',' '{print $3","$4}'
-         echo $my_str
-       shell: bash
+     - uses: ykelit/test-chart@main
+       with:
+         registries: |
+           ghcr.io,byzanteam,${{ github.repository_owner }},${{ secrets.GITHUB_TOKEN }}
+           registry.cn-hangzhou.aliyuncs.com,jet,dev-man,pass
