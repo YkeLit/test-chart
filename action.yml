@@ -16,3 +16,4 @@ runs:
         echo "images=$IMAGES" >> "$GITHUB_OUTPUT"
         echo $IMAGES
     - run: echo "${{ steps.registries.images}}"
+      shell: bash
