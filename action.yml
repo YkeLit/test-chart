@@ -3,9 +3,7 @@ description: Build and push front-end image for deploy
 inputs:
   registries:
     description: The list of registries URLs
-    required: false
-    default: |
-      ghcr.io, byzanteam, ${{ github.repository_owner }}, ${{ secrets.GITHUB_TOKEN }}
+    required: true
 runs:
   using: 'composite'
   steps:
