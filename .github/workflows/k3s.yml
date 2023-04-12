@@ -17,4 +17,5 @@ jobs:
      - id: repo-basename
        run: |
          echo $my_str | awk -F',' '{print $3","$4}'
+         echo $my_str
        shell: bash
