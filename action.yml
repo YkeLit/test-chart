@@ -17,7 +17,10 @@ runs:
           if [[ -z "$line" ]]; then
             break
           fi
-          echo "$line" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}" >> $GITHUB_OUTPUT
+          #echo "$line" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}" >> $GITHUB_OUTPUT
+          line=${line%,*}
+          line=${line/,/\/}
+          echo "$line" >> $GITHUB_OUTPUT
         done
         echo "EOF" >> $GITHUB_OUTPUT
     - name: Login to the custom registry
