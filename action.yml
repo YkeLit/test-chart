@@ -1,11 +1,18 @@
-name: 'helm chart lint and dry run'
-
+name: 'FE Build Image'
+description: Build and push front-end image for deploy
+inputs:
+  registries:
+    description: The list of registries URLs
+    required: false
+    default: |
+      ghcr.io, byzanteam, ${{ github.repository_owner }}, ${{ secrets.GITHUB_TOKEN }}
 runs:
-  # 使用一个开源的k3s actions
-  - uses: debianmaster/actions-k3s@master
-    with:
-      version: 'latest'
-
-  - run: helm lint
-
-  - run: helm install test . --dry-run
+  using: 'composite'
+  steps:
+    - name: Set up Docker registries info
+      id: registries
+      run: |
+        IMAGE_NAME=`basename ${{ github.repository }}`
+        IMAGES=$(echo ${{ inputs.registries }} | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}")
+        echo "images=$IMAGES" >> "$GITHUB_OUTPUT"
+        echo $IMAGES
