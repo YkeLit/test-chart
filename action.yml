@@ -13,9 +13,7 @@ runs:
       run: |
         IMAGE_NAME=`basename ${{ github.repository }}`
         IMAGES=$(echo "${{ inputs.registries }}" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}" | sed '$d' )
-        echo "images<<EOF" >> $GITHUB_OUTPUT
-        echo $IMAGES >> $GITHUB_OUTPUT
-        echo "EOF" >> $GITHUB_OUTPUT
+        echo "images=\"$IMAGES\"" >> "$GITHUB_OUTPUT"
     - name: Login to the custom registry
       shell: bash
       run: |
