@@ -7,10 +7,12 @@ jobs:
  build:
    runs-on: ubuntu-latest
    steps:
-    - run: echo "REGISTRIES=ghrc.io,byzanteam,${{ github.repository_owner }},${{ secrets.github_token }}
-        registry.aliyun.cn,jet,dev-man,${{ secrets.PASSWORD }}" >> $GITHUB_ENV
-    - run: |
-        for i in ${{ env.REGISTRIES.split(',') }}
-        do
-          echo "Value: $i"
-        done
+      - name: Set up environment variables
+        run: echo "MY_STRING=foo|bar|baz"
+
+      - name: Use split to separate values
+        run: |
+          for i in ${{ env.MY_STRING.split('|') }}
+          do
+            echo "Value: $i"
+          done
