@@ -16,5 +16,5 @@ jobs:
 
      - id: repo-basename
        run: |
-         echo "value=`basename ${{ github.repository }}`" >> $GITHUB_OUTPUT
+         echo "`basename ${{ github.repository }}`"
        shell: bash
