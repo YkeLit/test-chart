@@ -8,9 +8,9 @@ jobs:
    runs-on: ubuntu-latest
    steps:
       - name: Set up environment variables
-        run: echo "MY_STRING=foo|bar|baz"
+        run: echo "MY_STRING=foo|bar|baz" >> $GITHUB_ENV
 
       - name: Use split to separate values
         run: |
-          export MY_STRING_PARTS=(${MY_STRING//|/ })
+          export MY_STRING_PARTS=(${env.MY_STRING//|/ })
           echo "The first part is ${MY_STRING_PARTS[0]}"
