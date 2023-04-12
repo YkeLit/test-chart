@@ -14,6 +14,7 @@ jobs:
          
    steps:
 
-      - name: Use split to separate values
-        run: |
-          echo '$my_str' | tr '\n' '\\' | sed 's/\\$//'
+     - id: repo-basename
+       run: |
+         echo "value=`basename ${{ github.repository }}`" >> $GITHUB_OUTPUT
+       shell: bash
