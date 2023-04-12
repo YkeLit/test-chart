@@ -19,4 +19,4 @@ runs:
     - name: Login to the custom registry
       shell: bash
       run: |
-        echo "${{ steps.registries.images}}"
+        echo "${{ steps.registries.outputs.images}}"
