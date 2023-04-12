@@ -14,3 +14,4 @@ runs:
         IMAGE_NAME=`basename ${{ github.repository }}`
         IMAGES=$(echo "${{ inputs.registries }}" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}")
         echo $IMAGES
+        echo "${{ inputs.registries }}"
