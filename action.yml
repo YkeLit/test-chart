@@ -15,3 +15,4 @@ runs:
         IMAGES=$(echo "${{ inputs.registries }}" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}")
         echo "images=$IMAGES" >> "$GITHUB_OUTPUT"
         echo $IMAGES
+    - run: echo "${{ steps.registries.images}}"
