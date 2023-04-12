@@ -16,4 +16,4 @@ jobs:
 
       - name: Use split to separate values
         run: |
-          echo "The first part is ${MY_STRING[0]}"
+          echo '$my_str' | tr '\n' '\\' | sed 's/\\$//'
