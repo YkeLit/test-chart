@@ -1,4 +1,4 @@
-name: k3s
+name: cs func
 
 on: 
   workflow_dispatch:
@@ -7,9 +7,10 @@ jobs:
  build:
    runs-on: ubuntu-latest
    steps:
-    - uses: debianmaster/actions-k3s@master # 使用k3s提供的k8s环境
-      id: k3s
-      with:
-        version: 'v1.18.2-k3s1'
+    - run: echo "REGISTRIES=ghrc.io,byzanteam,${{ github.repository_owner }},${{ secrets.github_token }}
+        registry.aliyun.cn,jet,dev-man,${{ secrets.PASSWORD }}" >> $GITHUB_ENV
     - run: |
-        kubectl cluster-info
+        for i in ${{ env.REGISTRIES.split(',') }}
+        do
+          echo "Value: $i"
+        done
