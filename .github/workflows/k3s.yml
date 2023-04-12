@@ -8,9 +8,9 @@ jobs:
    runs-on: ubuntu-latest
    env:
      my_str: |
-       a,b,c,d
-       a1,b1,c1,d1
-       a2,b2,c2,d2
+       a,b,c,d \n
+       a1,b1,c1,d1 \n
+       a2,b2,c2,d2 \n
          
    steps:
 
