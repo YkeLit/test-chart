@@ -6,10 +6,14 @@ on:
 jobs:
  build:
    runs-on: ubuntu-latest
+   env:
+     my_str: |
+       " a,b,c,d
+         a1,b1,c1,d1
+         a2,b2,c2,d2"
+         
    steps:
-      - name: Set up environment variables
-        run: echo "MY_STRING=foo|bar|baz" >> $GITHUB_ENV
 
       - name: Use split to separate values
         run: |
-          echo "The first part is ${env.MY_STRING[0]}"
+          echo "The first part is ${MY_STRING[0]}"
