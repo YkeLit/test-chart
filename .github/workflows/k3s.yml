@@ -12,5 +12,4 @@ jobs:
 
       - name: Use split to separate values
         run: |
-          export MY_STRING_PARTS=(${env.MY_STRING//|/ })
-          echo "The first part is ${MY_STRING_PARTS[0]}"
+          echo "The first part is ${env.MY_STRING[0]}"
