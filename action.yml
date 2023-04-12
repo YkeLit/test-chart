@@ -10,6 +10,7 @@ runs:
   using: 'composite'
   steps:
     - name: Set up Docker registries info
+      shell: bash
       id: registries
       run: |
         IMAGE_NAME=`basename ${{ github.repository }}`
