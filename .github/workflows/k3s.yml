@@ -1,7 +1,8 @@
 name: cs func
 
 on: 
-  workflow_dispatch:
+  push:
+    main
   
 jobs:
  build:
