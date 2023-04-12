@@ -11,5 +11,5 @@ jobs:
      - uses: ykelit/test-chart@main
        with:
          registries: |
-           ghcr.io,byzanteam,${{ github.repository_owner }},${{ secrets.GITHUB_TOKEN }}
-           registry.cn-hangzhou.aliyuncs.com,jet,dev-man,pass
+           ghcr.io, byzanteam, ${{ github.repository_owner }}, ${{ secrets.GITHUB_TOKEN }}
+           registry.cn-hangzhou.aliyuncs.com, jet, dev-man, pass
