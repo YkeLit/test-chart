@@ -13,4 +13,10 @@ jobs:
      #    registries: |-
      #      ghcr.io,byzanteam,${{ github.repository_owner }},${{ secrets.GITHUB_TOKEN }}
      #      registry.cn-hangzhou.aliyuncs.com,jet,dev-man,pass
-     - run: echo ${{ runner.name }}
+     - run: |
+         echo "::group::test"
+         echo ${{ runner.name }}
+         echo "::endgroup::"
+         ehco "::group::test2"
+         echo "1234"
+         echo "::endgroup::"
