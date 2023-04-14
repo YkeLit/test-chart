@@ -17,6 +17,6 @@ jobs:
          echo "::group::test"
          echo ${{ runner.name }}
          echo "::endgroup::"
-         ehco "::group::test2"
+         echo "::group::test2"
          echo "1234"
          echo "::endgroup::"
