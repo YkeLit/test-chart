@@ -16,7 +16,10 @@ jobs:
      - run: |
          echo "::group::test"
          echo ${{ runner.name }}
+     - run: |
          echo "::endgroup::"
+     - run: |
          echo "::group::test2"
+     - run: |
          echo "1234"
          echo "::endgroup::"
