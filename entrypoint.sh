@@ -3,6 +3,7 @@ set -eux
 
 echo "::group::🔑 TEST1"
 ls && pwd
+echo "::endgroup::"
 
 echo "::group::🔑 TEST2"
 uname -a && who
