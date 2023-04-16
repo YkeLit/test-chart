@@ -8,18 +8,4 @@ jobs:
    runs-on: ubuntu-latest
          
    steps:
-     #- uses: ykelit/test-chart@main
-     #  with:
-     #    registries: |-
-     #      ghcr.io,byzanteam,${{ github.repository_owner }},${{ secrets.GITHUB_TOKEN }}
-     #      registry.cn-hangzhou.aliyuncs.com,jet,dev-man,pass
-     - run: |
-         echo "::group::test"
-         echo ${{ runner.name }}
-     - run: |
-         echo "::endgroup::"
-     - run: |
-         echo "::group::test2"
-     - run: |
-         echo "1234"
-         echo "::endgroup::"
+     - uses: ykelit/test-chart@main
