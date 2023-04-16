@@ -1,18 +1,6 @@
 name: 'FE Build Image'
 description: Build and push front-end image for deploy
-inputs:
-  registries:
-    description: The list of registries URLs
-    required: true
+
 runs:
-  using: 'composite'
-  steps:
-    - name: Set up Docker registries info
-      id: registries
-      shell: bash
-      run: |
-        echo "${{ inputs.registries }}" | while read line; do
-          echo $line | awk -F',' '{print $1}'
-          echo $line | awk -F',' '{print $3}'
-          echo $line | awk -F',' '{print $4}'
-        done
+  using: 'docker'
+  image: "Dockerfile"
