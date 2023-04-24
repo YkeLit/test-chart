@@ -1,6 +1,19 @@
-name: 'FE Build Image'
+name: '123'
 description: Build and push front-end image for deploy
+inputs:
+  sec:
+    description: "sec"
+    required: true
 
 runs:
-  using: 'docker'
-  image: "Dockerfile"
+  using: 'composite'
+  steps:
+    - name: Set up Docker registries info
+      id: registries
+      shell: bash
+      run: |
+        echo "images<<EOF" >> $GITHUB_OUTPUT
+        echo "${{ inputs.sec }}" | while read line; do
+          echo "$line" | awk -F',' "{print \$1\"/\"\$2\"/$IMAGE_NAME\"}" >> $GITHUB_OUTPUT
+        done
+        echo "EOF" >> $GITHUB_OUTPUT
