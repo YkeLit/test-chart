@@ -8,4 +8,6 @@ jobs:
    runs-on: ubuntu-latest
          
    steps:
-     - uses: ykelit/test-chart@main
+     - uses: ykelit/test-chart@secrets-t
+       with:
+         sec: ${{ secrets.ABC }}
