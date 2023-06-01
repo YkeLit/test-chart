@@ -22,7 +22,7 @@ jobs:
         run: |        
           # 修改 service name 和访问 url
           sed "s/example/${{ env.PROJECT_NAME }}/" example.yaml | \
-            yq eval-all 'select(fileIndex==0).http.services.*.loadBalancer.servers =
+            yq eval-all 'select(fileIndex==0).http.services.*.loadBalancer.servers = \
             select(fileIndex==1).servers | select(fileIndex==0)' - values.yaml > ${{ env.PROJECT_NAME }}.yaml
             
           # 判断 middlewares 是否为空
