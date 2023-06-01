@@ -25,6 +25,8 @@ body:
     attributes:
       label: Middlewares
       description: This is optional configuration for reverse proxy
+      value: |
+        middlewares:
       placeholder: |
         middlewares:
           test-compress:
