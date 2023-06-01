@@ -1,4 +1,4 @@
-name: Reverse Proxy Configuration Report
+name: Reverse Proxy Configuration
 description: Reverse proxy information report form
 title: "[REVERSE-PROXY]: "
 body:
@@ -19,10 +19,9 @@ body:
     attributes:
       label: Server url
       description: The url of the server that requires the reverse proxy
-      value: |
+      placeholder: |
         servers:
           - url: https://
-      render: yaml
     validations:
       required: true
   - type: textarea
@@ -30,6 +29,7 @@ body:
     attributes:
       label: Middlewares
       description: This is optional configuration for reverse proxy
+      value:
       placeholder: |
         middlewares:
           test-compress:
@@ -41,6 +41,5 @@ body:
                 X-Script-Name: "test"
               customResponseHeaders:
                 X-Custom-Response-Header: "value"
-      render: yaml
     validations:
       required: false
