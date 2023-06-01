@@ -10,7 +10,4 @@ jobs:
     name: Reverse Proxy
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo A comment on issue $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.id }}
+      - run: echo ${{ github.event.changes.body.from }}
