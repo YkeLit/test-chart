@@ -1,0 +1,39 @@
+http:
+  routers:
+    example:
+      entryPoints:
+        - web
+      rule: Host(`example.webs.jet.work`)
+      middlewares:
+        - redirect-to-https
+      service: example
+
+    example-websecure:
+      entryPoints:
+        - websecure
+      rule: Host(`example.webs.jet.work`)
+      service: example
+      middlewares:
+        - forwarder-proto
+      tls:
+        certResolver: jet
+
+  middlewares:
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+
+    forwarder-proto:
+      headers:
+        sslRedirect: true
+
+  services:
+    example:
+      loadBalancer:
+        servers:
+          - url: https://10.0.0.1:8808
+        serversTransport: example
+
+  serversTransports:
+    example:
+      insecureSkipVerify: true
