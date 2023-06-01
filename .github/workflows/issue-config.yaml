@@ -6,12 +6,11 @@ on:
 
 jobs:
   reverse_proxy:
-    # This job only runs for reverse proxy comments
     name: Reverse Proxy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: github/checkout@v3
+        uses: actions/checkout@v3
         
       - name: Generate the values configuration file
         run: echo "${{ github.event.issue.body }}" | grep -Ev '^###|^$|_No' > values.yaml
