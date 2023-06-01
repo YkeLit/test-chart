@@ -1,0 +1,16 @@
+name: test issue trigger workflow
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  reverse_proxy:
+    # This job only runs for reverse proxy comments
+    name: Reverse Proxy
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
