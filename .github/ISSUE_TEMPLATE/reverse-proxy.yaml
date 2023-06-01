@@ -1,0 +1,46 @@
+name: Reverse Proxy Configuration Report
+description: Reverse proxy information report form
+title: "[REVERSE-PROXY]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this reverse proxy report!
+  - type: input
+    id: project
+    attributes:
+      label: Project name
+      description: The project name represents the service name of this reverse agent and the webs.jet.work subdomain
+      placeholder: "ex. project: byzanteam"
+    validations:
+      required: true
+  - type: textarea
+    id: server-url
+    attributes:
+      label: Server url
+      description: The url of the server that requires the reverse proxy
+      value: |
+        servers:
+          - url: https://
+      render: yaml
+    validations:
+      required: true
+  - type: textarea
+    id: middlewares
+    attributes:
+      label: Middlewares
+      description: This is optional configuration for reverse proxy
+      placeholder: |
+        middlewares:
+          test-compress:
+            compress: {}
+
+          testHeader:
+            headers:
+              customRequestHeaders:
+                X-Script-Name: "test"
+              customResponseHeaders:
+                X-Custom-Response-Header: "value"
+      render: yaml
+    validations:
+      required: false
