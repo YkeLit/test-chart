@@ -27,7 +27,7 @@ jobs:
             
           # 判断 middlewares 是否为空
           if [[ -z $(yq '.middlewares' values.yaml) || $(yq '.middlewares' values.yaml) == null ]]; then
-            echo "No additional middlewares are set, skip configuration“
+            echo "No additional middlewares are set, skip configuration"
           else
             # middlewares 不为空时添加 middlewares 到反向代理配置文件
             yq eval-all --inplace 'select(fileIndex==0).http.middlewares += \
