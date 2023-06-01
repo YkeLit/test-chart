@@ -2,7 +2,7 @@ name: test issue trigger workflow
 
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   reverse_proxy:
@@ -13,4 +13,4 @@ jobs:
       - run: |
           echo A comment on issue $NUMBER
         env:
-          NUMBER: ${{ github.event.issue.body }}
+          NUMBER: ${{ github.event.issue.id }}
