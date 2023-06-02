@@ -1,0 +1,42 @@
+http:
+  routers:
+    yk-test:
+      entryPoints:
+        - web
+      rule: Host(`yk-test.webs.jet.work`)
+      middlewares:
+        - redirect-to-https
+        - testHeader
+      service: yk-test
+    yk-test-websecure:
+      entryPoints:
+        - websecure
+      rule: Host(`yk-test.webs.jet.work`)
+      service: yk-test
+      middlewares:
+        - forwarder-proto
+        - testHeader
+      tls:
+        certResolver: jet
+  middlewares:
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+    forwarder-proto:
+      headers:
+        sslRedirect: true
+    testHeader:
+      headers:
+        customRequestHeaders:
+          X-Script-Name: test
+        customResponseHeaders:
+          X-Custom-Response-Header: value
+  services:
+    yk-test:
+      loadBalancer:
+        servers:
+          - url: https://1.1.1.3
+        serversTransport: yk-test
+  serversTransports:
+    yk-test:
+      insecureSkipVerify: true
