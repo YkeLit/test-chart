@@ -19,17 +19,17 @@ jobs:
         run: echo "PROJECT_NAME=$(cat values.yaml | yq '.project')" >> $GITHUB_ENV
         
       - name: Generate the reverse proxy configuration file
-        run: |        
-          # 修改 service name 和访问 url
+        run: |
+          echo "::group::Modify the service name and access url"
           sed "s/example/${{ env.PROJECT_NAME }}/" example.yaml | \
             yq eval-all 'select(fileIndex==0).http.services.*.loadBalancer.servers =
             select(fileIndex==1).servers | select(fileIndex==0)' - values.yaml > ${{ env.PROJECT_NAME }}.yaml
-            
-          # 判断 middlewares 是否为空
+          echo "::endgroup::"
+          
+          echo "::group::Configure middlewares"
           if [[ -z $(yq '.middlewares' values.yaml) || $(yq '.middlewares' values.yaml) == null ]]; then
             echo "No additional middlewares are set, skip configuration"
           else
-            # middlewares 不为空时添加 middlewares 到反向代理配置文件
             yq eval-all --inplace 'select(fileIndex==0).http.middlewares +=
               select(fileIndex==1).middlewares | select(fileIndex==0)' ${{ env.PROJECT_NAME }}.yaml values.yaml
               
@@ -37,6 +37,7 @@ jobs:
               yq eval-all --inplace 'select(fileIndex==0).http.routers.*.middlewares +=
               select(fileIndex==1) | select(fileIndex==0)' ${{ env.PROJECT_NAME }}.yaml -
           fi
+          echo "::endgroup::"
           
       - name: Deploying the reverse proxy
         run: cat ${{ env.PROJECT_NAME }}.yaml
