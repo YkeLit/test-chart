@@ -37,5 +37,5 @@ jobs:
               select(fileIndex==1) | select(fileIndex==0)' ${{ env.PROJECT_NAME }}.yaml -
           fi
           
-      - name: Deploying the reverse proxy
-        run: cat ${{ env.PROJECT_NAME }}.yaml
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
