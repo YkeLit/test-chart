@@ -1,0 +1,16 @@
+name: deploy proxy
+
+on:
+  workflow_dispatch:
+  push: 
+    branches: [main]
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project name
+        run: echo "PROJECT_NAME=$(cat values.yaml | yq '.project')" >> $GITHUB_ENV
+          
+      - name: deploy config
+        run: cat ${{ env.PROJECT_NAME }}.yaml
