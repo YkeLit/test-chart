@@ -7,7 +7,6 @@ on:
 jobs:
   reverse_proxy:
     name: Reverse Proxy
-    if: github.event.issue.title ~= REVERSE-PROXY
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
