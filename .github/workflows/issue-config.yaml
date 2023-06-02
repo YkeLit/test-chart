@@ -24,18 +24,25 @@ jobs:
         run: |
           sed "s/example/${{ env.PROJECT_NAME }}/" example.yaml | \
             yq eval-all 'select(fileIndex==0).http.services.*.loadBalancer.servers =
-            select(fileIndex==1).servers | select(fileIndex==0)' - values.yaml > ${{ env.PROJECT_NAME }}.yaml
+            select(fileIndex==1).servers | select(fileIndex==0)' - values.yaml > configuration/${{ env.PROJECT_NAME }}.yaml
           
           if [[ -z $(yq '.middlewares' values.yaml) || $(yq '.middlewares' values.yaml) == null ]]; then
             echo "No additional middlewares are set, skip configuration"
           else
             yq eval-all --inplace 'select(fileIndex==0).http.middlewares +=
-              select(fileIndex==1).middlewares | select(fileIndex==0)' ${{ env.PROJECT_NAME }}.yaml values.yaml
+              select(fileIndex==1).middlewares | select(fileIndex==0)' configuration/${{ env.PROJECT_NAME }}.yaml values.yaml
               
             yq  '.middlewares | keys' values.yaml | \
               yq eval-all --inplace 'select(fileIndex==0).http.routers.*.middlewares +=
-              select(fileIndex==1) | select(fileIndex==0)' ${{ env.PROJECT_NAME }}.yaml -
+              select(fileIndex==1) | select(fileIndex==0)' configuration/${{ env.PROJECT_NAME }}.yaml -
           fi
+          
+      - name: Delete redundant files
+        run: rm -f values.yaml
           
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
+        with:
+          title: "[REVERSE-PROXY]: ${{ env.PROJECT_NAME }} setting a reverse proxy"
+          body: |
+            ${{ env.PROJECT_NAME }}
