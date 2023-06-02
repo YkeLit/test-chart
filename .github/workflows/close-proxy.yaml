@@ -1,0 +1,23 @@
+name: close proxy
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  close-proxy:
+    name: Close reverse proxy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Get project name
+        run: echo "PROJECT_NAME=$(echo "${{ github.event.issue.body }}" | grep -Ev '^###|^$|_No' | yq '.project')" >> $GITHUB_ENV
+        
+      - run: echo "${{ env.PROJECT_NAME }}.yaml"
+        
+      # - name: Delete the configuration file of the remote host
+      #   run: |        
+      #     ssh user@hostname rm -f /opt/reverse-proxy/conf/${{ env.PROJECT_NAME }}.yaml
+          
