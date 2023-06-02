@@ -12,6 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
+      - run: echo "${{ github.event.issue.pull_request }}
+        
       - name: Generate the values configuration file
         run: echo "${{ github.event.issue.body }}" | grep -Ev '^###|^$|_No' > values.yaml
 
