@@ -3,11 +3,11 @@ name: deploy proxy
 on:
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened]
+    types: [labeled]
   
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Get project name
-        run: echo ${{ github.event.pull_request.body }}
+        run: cat configuration/${{ github.event.pull_request.body }}.yaml
