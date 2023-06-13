@@ -9,5 +9,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:   
-      - name: use yq
-        run: echo ${{ github.event.release }}
+      - name: echo event
+        run: echo ${{ github.event.release.tag_name }}
