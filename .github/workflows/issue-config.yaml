@@ -2,7 +2,7 @@ name: test issue trigger workflow
 
 on:
   issues:
-    types: [opened, reopened]
+    types: [opened, reopened, edited]
 
 jobs:
   reverse_proxy:
@@ -43,6 +43,6 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          title: "[REVERSE-PROXY]: ${{ env.PROJECT_NAME }} setting a reverse proxy"
+          title: "${{ github.event.issue.title }}"
           body: |
             ${{ env.PROJECT_NAME }}
