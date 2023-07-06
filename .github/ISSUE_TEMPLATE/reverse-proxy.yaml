@@ -10,9 +10,10 @@ body:
       placeholder: "project: byzanteam"
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: server-url
     attributes:
+      render: yaml
       label: Server url
       description: The url of the server that requires the reverse proxy
       placeholder: |
@@ -20,9 +21,10 @@ body:
           - url: https://
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: middlewares
     attributes:
+      render: yaml
       label: Middlewares
       description: This is optional configuration for reverse proxy
       placeholder: |
