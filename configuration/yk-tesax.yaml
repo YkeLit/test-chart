@@ -1,0 +1,34 @@
+http:
+  routers:
+    yk-tesax:
+      entryPoints:
+        - web
+      rule: Host(`yk-tesax.webs.jet.work`)
+      middlewares:
+        - redirect-to-https
+      service: yk-tesax
+    yk-tesax-websecure:
+      entryPoints:
+        - websecure
+      rule: Host(`yk-tesax.webs.jet.work`)
+      service: yk-tesax
+      middlewares:
+        - forwarder-proto
+      tls:
+        certResolver: jet
+  middlewares:
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+    forwarder-proto:
+      headers:
+        sslRedirect: true
+  services:
+    yk-tesax:
+      loadBalancer:
+        servers:
+          - url: https://10.0.0.1:8808
+        serversTransport: yk-tesax
+  serversTransports:
+    yk-tesax:
+      insecureSkipVerify: true
