@@ -21,6 +21,9 @@ body:
           - url: https://
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: "[headers 配置文档](https://doc.traefik.io/traefik/middlewares/http/headers/)"
   - type: textarea
     id: middlewares
     attributes:
