@@ -10,7 +10,7 @@ body:
       placeholder: "project: byzanteam"
     validations:
       required: true
-  - type: textarea
+  - type: markdown
     id: server-url
     attributes:
       label: Server url
@@ -20,7 +20,7 @@ body:
           - url: https://
     validations:
       required: true
-  - type: textarea
+  - type: markdown
     id: middlewares
     attributes:
       label: Middlewares
