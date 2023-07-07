@@ -6,7 +6,7 @@ body:
     id: project
     attributes:
       label: Project name
-      description: The `project` name represents the service name of this reverse agent and the webs.jet.work subdomain
+      description: The `project` name represents the service name of this reverse agent and the `webs.jet.work` subdomain
       placeholder: "project: byzanteam"
     validations:
       required: true
