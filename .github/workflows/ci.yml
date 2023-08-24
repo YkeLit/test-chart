@@ -21,4 +21,4 @@ jobs:
             type=ref,event=branch
             type=sha
 
-      - run: echo ${{ steps.meta.outputs.versions }}
+      - run: echo ${{ steps.meta.outputs.version }}
