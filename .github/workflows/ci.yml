@@ -4,12 +4,20 @@ on:
   workflow_dispatch:
   release:
     types: [published]
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: echo event
-        run: echo "IMAGE_TAG=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
-      - run: echo ${{ env.IMAGE_TAG }}
+      -
+        name: Docker meta
+        uses: docker/metadata-action@v4
+        id: meta
+        with:
+          tags:
+            type=ref,event=branch
+            type=sha
+
+      - run: echo ${{ steps.meta.outputs.versions }}
