@@ -16,6 +16,7 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
+          images: ghcr.io/byzanteam/abcd
           tags: |
             type=ref,event=branch
             type=sha
