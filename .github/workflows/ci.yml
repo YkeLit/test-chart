@@ -11,4 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: echo event
-        run: git rev-parse --short "$GITHUB_SHA"
+        run: echo "IMAGE_TAG=$(git rev-parse --short \"$GITHUB_SHA\")" >> $GITHUB_ENV
+      - run: echo ${{ env.IMAGE_TAG }}
