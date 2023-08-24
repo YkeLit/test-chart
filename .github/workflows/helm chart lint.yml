@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:   
+    steps:
+      - uses: actions/checkout@v3
       - name: echo event
         run: git rev-parse --short "$GITHUB_SHA"
