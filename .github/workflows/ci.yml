@@ -18,7 +18,7 @@ jobs:
         with:
           images: ghcr.io/byzanteam/abcd
           tags: |
-            type=ref,event=branch
             type=sha
+            type=ref,event=branch
 
-      - run: echo ${{ steps.meta.outputs.json }}
+      - run: echo DOCKER_METADATA_OUTPUT_VERSION
