@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:   
       - name: echo event
-        run: echo ${{ github.event.release.name }}
+        run: $(git rev-parse --short "$GITHUB_SHA")
