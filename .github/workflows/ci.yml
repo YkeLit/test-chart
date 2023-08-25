@@ -16,7 +16,8 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
-          images: name=" ",enable=true
+          images: 
+            tower
           tags: |
             type=sha
 
