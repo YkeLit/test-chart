@@ -16,8 +16,8 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
-          images: ghcr.io/byzanteam/abcd
+          images: name=,enable=true
           tags: |
             type=sha
 
-      - run: echo DOCKER_METADATA_OUTPUT_VERSION
+      - run: echo ${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
