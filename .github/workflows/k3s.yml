@@ -8,4 +8,13 @@ jobs:
    runs-on: ubuntu-latest
          
    steps:
-     - uses: ykelit/test-chart@main
+     - name: Metadata
+       id: meta
+       uses: docker/metadata-action@v4
+       with:
+         images: |
+           ghcr.io/byzanteam/${{ env.RELEASE }}
+         tags: |
+           type=sha
+
+     - run: echo ${{ steps.meta.outputs.version }}
