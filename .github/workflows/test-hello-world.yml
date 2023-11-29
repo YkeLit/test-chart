@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: Test actions
         uses: byzanteam/jet-actions/hello-world@feat/yangke/test-hello
-        with:
-          who-to-greet: 'Mona the Octocat'
+        # with:
+        #   who-to-greet: 'Mona the Octocat'
