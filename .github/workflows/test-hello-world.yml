@@ -1,0 +1,11 @@
+name: Test hello world
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test actions
+        uses: byzanteam/jet-actions/hello-world@feat/yangke/test-hello
+        with:
+          who-to-greet: 'Mona the Octocat'
