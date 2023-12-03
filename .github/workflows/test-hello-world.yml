@@ -8,8 +8,8 @@ jobs:
     steps:
       - name: Test actions
         id: hello
-        uses: byzanteam/jet-actions/hello-world@feat/yangke/test-hello
+        uses: byzanteam/jet-actions/registry-login@feat/yangke/operate-login-info
         with:
-          who-to-greet: 'AVC the Octocat'
+          registry-info: ${{ secrets.REGISTRY_INFO }}
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The registry-hostname was ${{ steps.hello.outputs.registry-hostname }}"
