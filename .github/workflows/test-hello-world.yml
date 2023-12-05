@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: setup deno
         uses: denoland/setup-deno@v1
+      - run: |
+          if [ -z \"$ {registry-info}\" ]; then
+          echo 'DEPLOY_ENV is not set'
+          else
+          echo 'DEPLOY_ENV is set'
+          fi
       - name: Test actions
         id: hello
         run: deno run https://raw.githubusercontent.com/Byzanteam/jet-actions/feat/yangke/operate-login-info/registry-login/example/main.ts
