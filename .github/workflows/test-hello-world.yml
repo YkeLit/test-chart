@@ -17,6 +17,6 @@ jobs:
           fi
       - name: Test actions
         id: hello
-        run: deno run https://raw.githubusercontent.com/Byzanteam/jet-actions/feat/yangke/operate-login-info/registry-login/example/main.ts
+        run: deno run -A https://raw.githubusercontent.com/Byzanteam/jet-actions/feat/yangke/operate-login-info/registry-login/example/main.ts
       - name: Get the output time
         run: echo "The registry-hostname was ${{ steps.hello.outputs.registry-hostname }}"
