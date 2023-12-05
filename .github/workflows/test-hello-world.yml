@@ -1,7 +1,8 @@
 name: Test hello world
 on:
   push:
-
+env:
+  registry-info: ${{ secrets.REGISTRY_INFO }}
 jobs:
   test:
     runs-on: ubuntu-latest
