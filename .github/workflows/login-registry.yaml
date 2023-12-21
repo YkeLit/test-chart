@@ -10,3 +10,4 @@ jobs:
         uses: byzanteam/jet-actions/registry-login@feat/yangke/operate-login-info
         with:
           registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
+      - run: docker search registry.cn-chengdu.aliyuncs.com/yk-tools
