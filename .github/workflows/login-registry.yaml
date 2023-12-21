@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        id: login-info
         uses: byzanteam/jet-actions/registry-login@feat/yangke/operate-login-info
         with:
           registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
       - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
+      - run: echo ${{ steps.login-info.outputs.registry-hostname }}
+      - run: echo ${{ steps.login-info.outputs.registry-namespace }}
