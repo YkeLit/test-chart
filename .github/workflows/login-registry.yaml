@@ -1,6 +1,9 @@
 name: login registry
 
-on: push
+on: 
+  pull_request:
+    types: [opened, reopened]
+  push: 
 
 jobs:
   login-test:
@@ -14,4 +17,4 @@ jobs:
       # - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
       - run: echo ${{ steps.login-info.outputs.hostname }}
       - run: echo ${{ steps.login-info.outputs.namespace }}
-      - run: echo ${{ github.event }}
+      - run: echo ${{ github.event.pull_request }}
