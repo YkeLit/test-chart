@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: login
         id: login-info
-        uses: byzanteam/jet-actions/registry-login@feat/yangke/registry-login
+        uses: byzanteam/jet-actions/registry-login@main
         with:
           registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
       # - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
