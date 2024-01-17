@@ -2,7 +2,7 @@ name: login registry
 
 on: 
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, labeled]
   # push: 
 
 jobs:
@@ -21,4 +21,5 @@ jobs:
       - run: echo "${{ github.event.pull_request.number }}"
       - run: echo "test_url=${{ github.event.pull_request.number }}.$(basename ${{ github.repository }}).apps.test.wrok" >> $GITHUB_OUTPUT
         id: url
+      - run: echo "${{ github.context.payload.pull_request.number }}"
       - run: echo ${{ steps.url.outputs.test_url }}
