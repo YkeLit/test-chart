@@ -9,12 +9,12 @@ jobs:
   login-test:
     runs-on: ubuntu-latest
     steps:
-      - name: login
-        id: login-info
-        uses: byzanteam/jet-actions/registry-login@main
-        with:
-          registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
+      # - name: login
+      #   id: login-info
+      #   uses: byzanteam/jet-actions/registry-login@main
+      #   with:
+      #     registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
       # - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
-      - run: echo ${{ steps.login-info.outputs.hostname }}
-      - run: echo ${{ steps.login-info.outputs.namespace }}
-      - run: echo $GITHUB_EVENT_PATH
+      # - run: echo ${{ steps.login-info.outputs.hostname }}
+      # - run: echo ${{ steps.login-info.outputs.namespace }}
+      - run: printenv
