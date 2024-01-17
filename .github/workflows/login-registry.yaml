@@ -18,8 +18,9 @@ jobs:
       # - run: echo ${{ steps.login-info.outputs.hostname }}
       # - run: echo ${{ steps.login-info.outputs.namespace }}
       - run: echo "${{ github.event.pull_request.html_url }}"
-      - run: echo "${{ github.event.pull_request.number }}"
       - run: echo "test_url=${{ github.event.pull_request.number }}.$(basename ${{ github.repository }}).apps.test.wrok" >> $GITHUB_OUTPUT
         id: url
-      - run: echo "${{ github.context.payload.pull_request.number }}"
       - run: echo ${{ steps.url.outputs.test_url }}
+      - uses: byzanteam/jet-actions/comment-pull-request@feat/yangke/comment-pr 
+        with:
+          message: test
