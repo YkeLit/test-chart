@@ -19,3 +19,4 @@ jobs:
       # - run: echo ${{ steps.login-info.outputs.namespace }}
       - run: echo "${{ github.event.pull_request.html_url }}"
       - run: echo "${{ github.event.pull_request.number }}"
+      - run: echo "${{ github.repository }}"
