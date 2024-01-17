@@ -17,4 +17,4 @@ jobs:
       # - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
       # - run: echo ${{ steps.login-info.outputs.hostname }}
       # - run: echo ${{ steps.login-info.outputs.namespace }}
-      - run: cat $GITHUB_EVENT_PATH
+      - run: echo "${ github.event.pull_request }"
