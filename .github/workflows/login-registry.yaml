@@ -24,6 +24,3 @@ jobs:
       - uses: byzanteam/jet-actions/comment-pull-request@feat/yangke/comment-pr 
         with:
           message: test
-      - uses: .github/actions/comment
-        with:
-          message: test
