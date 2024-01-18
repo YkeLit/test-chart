@@ -15,4 +15,4 @@ jobs:
         with:
           message: |
             ${{ steps.url.outputs.test_url }}
-            test1
+            test2
