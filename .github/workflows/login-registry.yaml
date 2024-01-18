@@ -13,4 +13,6 @@ jobs:
         id: url
       - uses: byzanteam/jet-actions/comment-pull-request@feat/yangke/comment-pr 
         with:
-          message: ${{ steps.url.outputs.test_url }}
+          message: |
+            ${{ steps.url.outputs.test_url }}
+            test1
