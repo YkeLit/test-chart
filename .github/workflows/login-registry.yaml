@@ -33,3 +33,6 @@ jobs:
               repo: context.repo.repo,
               body: '👋 Thanks for reporting!'
             })
+      - uses: ./.github/actions/comment
+        with:
+          message: test
