@@ -1,17 +1,29 @@
 name: login registry
 
-on: push
+on: 
+  pull_request:
+    types: [opened, reopened, labeled]
+  # push: 
 
 jobs:
   login-test:
     runs-on: ubuntu-latest
     steps:
-      - name: login
-        id: login-info
-        uses: byzanteam/jet-actions/registry-login@main
-        with:
-          registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
+      # - name: login
+      #   id: login-info
+      #   uses: byzanteam/jet-actions/registry-login@main
+      #   with:
+      #     registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
       # - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
-      - run: echo ${{ steps.login-info.outputs.hostname }}
-      - run: echo ${{ steps.login-info.outputs.namespace }}
-      - run: echo ${{ github.event }}
+      # - run: echo ${{ steps.login-info.outputs.hostname }}
+      # - run: echo ${{ steps.login-info.outputs.namespace }}
+      - run: echo "${{ github.event.pull_request.html_url }}"
+      - run: echo "test_url=${{ github.event.pull_request.number }}.$(basename ${{ github.repository }}).apps.test.wrok" >> $GITHUB_OUTPUT
+        id: url
+      - run: echo ${{ steps.url.outputs.test_url }}
+      - uses: byzanteam/jet-actions/comment-pull-request@feat/yangke/comment-pr 
+        with:
+          message: test
+      - uses: ./.github/actions/comment
+        with:
+          message: test
