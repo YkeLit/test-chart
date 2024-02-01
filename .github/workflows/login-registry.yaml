@@ -20,3 +20,4 @@ jobs:
         with:
           k8s_token: ${{ secrets.TOKEN }}
           release_name: abc
+          k8s_apiserver: https://150.109.77.181:6443
