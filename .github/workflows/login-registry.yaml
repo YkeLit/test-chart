@@ -19,3 +19,4 @@ jobs:
         uses: byzanteam/jet-actions/uninstall-helm-release@feat/yangke/uninstall-helm-release
         with:
           k8s_token: 123456123
+          release_name: abc
