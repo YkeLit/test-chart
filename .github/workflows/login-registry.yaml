@@ -32,4 +32,4 @@ jobs:
           echo $line | awk '{print $2}'
           done
     - name: Reuse a variable obtained in another step
-      run: echo ${{ steps.get-public-url.outputs.result }}
+      run: echo "${{ steps.get-public-url.outputs.result }}"
