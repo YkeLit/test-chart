@@ -1,6 +1,7 @@
 name: login registry
 
-on: push
+on: 
+  - push
 
 jobs:
   login-test:
@@ -15,9 +16,22 @@ jobs:
       # - run: echo ${{ steps.login-info.outputs.hostname }}
       # - run: echo ${{ steps.login-info.outputs.namespace }}
       # - run: echo ${{ github.event }}
-      - name: release name
-        uses: byzanteam/jet-actions/uninstall-helm-release@feat/yangke/uninstall-helm-release
-        with:
-          k8s_token: ${{ secrets.TOKEN }}
-          release_name: abc
-          k8s_apiserver: https://150.109.77.181:6443
+      # - name: release name
+      #   uses: byzanteam/jet-actions/uninstall-helm-release@feat/yangke/uninstall-helm-release
+      #   with:
+      #     k8s_token: ${{ secrets.TOKEN }}
+      #     release_name: abc
+      #     k8s_apiserver: https://150.109.77.181:6443
+    - uses: actions/checkout@main
+    - name: The public URL for a application deployed on a Kubernetes cluster.
+      id: get-public-url
+      uses: mikefarah/yq@master
+      with:
+        cmd: |
+          echo "public_url<<EOF" >> $GITHUB_OUTPUT
+          echo "$(yq '.applicationHosts' values.yaml || yq '.hosts' values.yaml)" | while read line; do
+          echo $line | awk '{print $2}' >> $GITHUB_OUTPUT
+          done
+          echo "EOF" >> $GITHUB_OUTPUT
+    - name: Reuse a variable obtained in another step
+      run: echo ${{ steps.get-public-url.outputs.result }}
