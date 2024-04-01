@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@main
     - name: The public URL for a application deployed on a Kubernetes cluster.
       id: get-public-url
-      uses: mikefarah/yq@master
+      uses: mikefarah/yq@v4
       with:
         cmd: |
           echo "$(yq '.applicationHosts' values.yaml || yq '.hosts' values.yaml)" | while read line; do
