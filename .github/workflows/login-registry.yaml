@@ -1,12 +1,12 @@
 name: login registry
 
 on: 
-  - push
-  - workflow_dispatch:
-      inputs:
-        descript: "abcd"
-        require: true
-        defalut: "12345"
+  workflow_dispatch:
+    inputs:
+      test-inputs:
+        description: "abcd"
+        required: true
+        default: "12345"
 
 jobs:
   login-test:
