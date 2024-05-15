@@ -19,8 +19,7 @@ jobs:
         sparse-checkout: |
           denoified-actions/
 
-    - run: pwd
-      working-directory: './main'
+    - run: ls -a
       # - name: login
       #   id: login-info
       #   uses: byzanteam/jet-actions/registry-login@main
