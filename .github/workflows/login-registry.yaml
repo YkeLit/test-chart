@@ -12,6 +12,14 @@ jobs:
   login-test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: 'Byzanteam/jet-actions'
+        path: 'jet-actions'
+        sparse-checkout: |
+          denoified-actions/
+
+    - run: pwd
       # - name: login
       #   id: login-info
       #   uses: byzanteam/jet-actions/registry-login@main
@@ -38,4 +46,4 @@ jobs:
     #       done
     # - name: Reuse a variable obtained in another step
     #   run: echo "${{ steps.get-public-url.outputs.result }}"
-    - run: echo ${GITHUB_REPOSITORY_OWNER}
+    # - run: echo ${GITHUB_REPOSITORY_OWNER}
