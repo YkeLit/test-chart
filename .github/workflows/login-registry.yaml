@@ -19,7 +19,7 @@ jobs:
         sparse-checkout: |
           denoified-actions/
 
-    - run: ls -a
+    - run: tree
       # - name: login
       #   id: login-info
       #   uses: byzanteam/jet-actions/registry-login@main
