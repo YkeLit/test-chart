@@ -16,6 +16,7 @@ jobs:
       with:
         repository: 'Byzanteam/jet-actions'
         path: 'jet-actions'
+        ref: 'bump-version'
         sparse-checkout: |
           denoified-actions/
 
