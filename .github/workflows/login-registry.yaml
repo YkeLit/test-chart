@@ -10,7 +10,7 @@ on:
 
 jobs:
   login-test:
-    runs-on: ubuntu-latest
+    runs-on: ali-runner-set3
     steps:
     - uses: actions/checkout@v4
       with:
