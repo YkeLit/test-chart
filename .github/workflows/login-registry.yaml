@@ -10,7 +10,7 @@ on:
 
 jobs:
   login-test:
-    runs-on: ali-runner-set3
+    runs-on: hk-host
     steps:
     - uses: actions/checkout@v4
       with:
