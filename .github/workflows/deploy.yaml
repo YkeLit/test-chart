@@ -7,6 +7,6 @@ on:
   
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macOS
     steps:
       - run: echo ${{ runner.os }}-${{ runner.arch }}
