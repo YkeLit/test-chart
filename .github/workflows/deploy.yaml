@@ -9,4 +9,4 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ runner.os }}
+      - run: echo ${{ runner.os }}-${{ runner.arch }}
