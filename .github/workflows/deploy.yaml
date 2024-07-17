@@ -9,4 +9,5 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@main
       - run: git describe --tags --abbrev=0
