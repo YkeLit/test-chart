@@ -9,4 +9,4 @@ jobs:
   deploy:
     runs-on: macOS
     steps:
-      - run: echo ${{ runner.os }}-${{ runner.arch }}
+      - run: git describe --tags --abbrev=0
