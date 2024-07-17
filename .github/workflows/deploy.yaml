@@ -7,6 +7,6 @@ on:
   
 jobs:
   deploy:
-    runs-on: macOS
+    runs-on: ubuntu-latest
     steps:
       - run: git describe --tags --abbrev=0
