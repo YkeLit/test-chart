@@ -10,4 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - run: echo ${{ github.ref }}
+      - run: |
+           echo ${{ runner.temp }}
+           ls ${{ runner.temp }}
