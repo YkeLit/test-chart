@@ -21,5 +21,5 @@ jobs:
           images: |
             name/app
           tags: |
-            type=match,pattern=\d.\d.\d
+            type=ref,event=tag
       - run: echo ${{ steps.meta.outputs.version }}
