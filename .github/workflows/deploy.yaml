@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   pull_request:
     types: [labeled]
+  workflow_run:
+    workflows: ["login registry"]
+    types:
+      - completed
   
 jobs:
   deploy:
