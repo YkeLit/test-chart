@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - run: |
-           echo ${{ runner.temp }}
-           ls ${{ runner.temp }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            name/app
+          tags: |
+            type=match,pattern=\d.\d.\d
+      - run: echo ${{ steps.meta.outputs.version }}
