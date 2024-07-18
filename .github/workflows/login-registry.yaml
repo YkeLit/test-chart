@@ -1,16 +1,12 @@
 name: login registry
 
-on: 
-  workflow_dispatch:
-    inputs:
-      test-inputs:
-        description: "abcd"
-        required: true
-        default: "12345"
+on:
+  release:
+    types: [published]
 
 jobs:
   login-test:
-    runs-on: hk-host
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
       with:
@@ -19,32 +15,3 @@ jobs:
         ref: 'bump-version'
         sparse-checkout: |
           denoified-actions/
-
-    - run: tree
-      # - name: login
-      #   id: login-info
-      #   uses: byzanteam/jet-actions/registry-login@main
-      #   with:
-      #     registry-info: ${{ secrets.ALIYUN_SKYLARK_REGISTRY }}
-      # - run: docker pull registry.cn-chengdu.aliyuncs.com/yk-tools/nfs-provisioner:v4.0.8
-      # - run: echo ${{ steps.login-info.outputs.hostname }}
-      # - run: echo ${{ steps.login-info.outputs.namespace }}
-      # - run: echo ${{ github.event }}
-      # - name: release name
-      #   uses: byzanteam/jet-actions/uninstall-helm-release@feat/yangke/uninstall-helm-release
-      #   with:
-      #     k8s_token: ${{ secrets.TOKEN }}
-      #     release_name: abc
-      #     k8s_apiserver: https://150.109.77.181:6443
-    # - uses: actions/checkout@main
-    # - name: The public URL for a application deployed on a Kubernetes cluster.
-    #   id: get-public-url
-    #   uses: mikefarah/yq@v4
-    #   with:
-    #     cmd: |
-    #       echo "$(yq '.applicationHosts' values.yaml || yq '.hosts' values.yaml)" | while read line; do
-    #       echo $line | awk '{print $2}'
-    #       done
-    # - name: Reuse a variable obtained in another step
-    #   run: echo "${{ steps.get-public-url.outputs.result }}"
-    # - run: echo ${GITHUB_REPOSITORY_OWNER}
