@@ -8,13 +8,17 @@ jobs:
   login-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-      with:
-        repository: 'Byzanteam/jet-actions'
-        path: 'jet-actions'
-        ref: 'bump-version'
-        sparse-checkout: |
-          denoified-actions/
-    - run: |
-        echo "1234" > ${{ runner.temp }}/test
-        cat ${{ runner.temp }}/test
+
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            name/app
+          tags: |
+            type=raw,enable={{is_default_branch}},value=nightly
+            type=sha,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+
+      - run: echo "${{ steps.meta.outputs.version }}"
