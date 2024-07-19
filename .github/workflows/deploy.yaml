@@ -10,6 +10,7 @@ on:
       - completed
     branches:
       - 'releases/**'
+      - 'main'
   
 jobs:
   deploy:
