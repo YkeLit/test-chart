@@ -8,6 +8,8 @@ on:
     workflows: ["login registry"]
     types:
       - completed
+    branches:
+      - 'releases/**'
   
 jobs:
   deploy:
@@ -21,5 +23,5 @@ jobs:
           images: |
             name/app
           tags: |
-            type=pep440,pattern={{version}}
+            type=semver,pattern={{version}}
       - run: echo ${{ steps.meta.outputs.version }}
