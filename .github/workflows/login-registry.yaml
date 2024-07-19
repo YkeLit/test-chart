@@ -16,5 +16,6 @@ jobs:
         ref: 'bump-version'
         sparse-checkout: |
           denoified-actions/
-    - run: echo "1234" > ${{ runner.temp }}/test
-    - run: cat ${{ runner.temp }}/test
+    - run: |
+        echo "1234" > ${{ runner.temp }}/test
+        cat ${{ runner.temp }}/test
