@@ -19,6 +19,7 @@ jobs:
           images: 
             tower
           tags: |
-            type=sha
+            type=sha,evnet=branch
+            type=sha,event=tag
 
       - run: echo ${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
