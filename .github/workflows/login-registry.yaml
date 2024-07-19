@@ -3,7 +3,6 @@ name: login registry
 on:
   release:
     types: [published]
-  push:
 
 jobs:
   login-test:
